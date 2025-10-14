@@ -2415,8 +2415,13 @@ def test_WorkActivity_query_activities_by_tab_is_todo(app, workflow, db, users, 
             title='test', shared_user_ids=[], extra_info={},
             action_order=6, item_id=item_metdata.model.id,
         )
+        request_mail = ActivityRequestMail(
+            activity_id=activity.activity_id,
+            request_maillist=users[users_idx]["email"]
+        )
         with db.session.begin_nested():
             db.session.add(activity)
+            db.session.add(request_mail)
         db.session.commit()
 
         activity_action = ActivityAction(activity_id=activity.activity_id,
@@ -2441,9 +2446,17 @@ def test_WorkActivity_query_activities_by_tab_is_todo(app, workflow, db, users, 
     (0, True),
     (4, False),
 ])
-def test_WorkActivity_query_activities_by_tab_is_all(app, users, activity_with_roles, users_idx, expected_included):
+def test_WorkActivity_query_activities_by_tab_is_all(db,app, users, activity_with_roles, users_idx, expected_included):
     with app.test_request_context():
         login_user(users[users_idx]["obj"])
+        activity = activity_with_roles["activity"]
+        request_mail = ActivityRequestMail(
+            activity_id=activity.activity_id,
+            request_maillist=users[users_idx]["email"]
+        )
+        with db.session.begin_nested():
+            db.session.add(request_mail)
+        db.session.commit()
 
         actual_query = WorkActivity.query_activities_by_tab_is_all(
             Activity.query, False, [], [])
