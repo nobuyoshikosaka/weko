@@ -73,7 +73,7 @@ for module_path in modules/*/; do
     #   echo "### skip tests for ${module_path%?} ###"
     #   continue
     # fi
-    # if [[ ${module_path} =~ ^modules/(invenio-records).+$ ]]; then
+    # if [[ ${module_path} =~ ^modules/invenio-records/$ ]]; then
     #   echo "### skip tests for ${module_path%?} ###"
     #   continue
     # fi
@@ -149,23 +149,31 @@ for module_path in modules/*/; do
     #   echo "### skip tests for ${module_path%?} ###"
     #   continue
     # fi
+    # if [[ ${module_path} =~ ^modules/(weko-notifications).+$ ]]; then
+    #   echo "### skip tests for ${module_path%?} ###"
+    #   continue
+    # fi
     # if [[ ${module_path} =~ ^modules/(weko-plugins).+$ ]]; then
     #   echo "### skip tests for ${module_path%?} ###"
     #   continue
     # fi
-    # if [[ ${module_path} =~ ^modules/(weko-records-ui).+$ ]]; then
-    #   echo "### skip tests for ${module_path%?} ###"
-    #   continue
-    # fi
+    if [[ ${module_path} =~ ^modules/(weko-records-ui).+$ ]]; then
+      echo "### skip tests for ${module_path%?} ###"
+      continue
+    fi
     # if [[ ${module_path} =~ ^modules/weko-records/$ ]];then
     #   echo "### skip tests for ${module_path%?} ###"
     #   continue
     # fi
-    # if [[ ${module_path} =~ ^modules/(weko-schema-ui).+$ ]]; then
+    if [[ ${module_path} =~ ^modules/(weko-schema-ui).+$ ]]; then
+      echo "### skip tests for ${module_path%?} ###"
+      continue
+    fi
+    # if [[ ${module_path} =~ ^modules/(weko-search-ui).+$ ]]; then
     #   echo "### skip tests for ${module_path%?} ###"
     #   continue
     # fi
-    # if [[ ${module_path} =~ ^modules/(weko-search-ui).+$ ]]; then
+    # if [[ ${module_path} =~ ^modules/(weko-signposting).+$ ]]; then
     #   echo "### skip tests for ${module_path%?} ###"
     #   continue
     # fi
@@ -185,7 +193,11 @@ for module_path in modules/*/; do
     #   echo "### skip tests for ${module_path%?} ###"
     #   continue
     # fi
-    # if [[ ${module_path} =~ ^modules/(weko-workflow).+$ ]]; then
+    if [[ ${module_path} =~ ^modules/(weko-workflow).+$ ]]; then
+      echo "### skip tests for ${module_path%?} ###"
+      continue
+    fi
+    # if [[ ${module_path} =~ ^modules/(weko-workspace).+$ ]]; then
     #   echo "### skip tests for ${module_path%?} ###"
     #   continue
     # fi

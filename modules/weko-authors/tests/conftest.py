@@ -441,7 +441,7 @@ def client(app):
 
 @pytest.fixture()
 def esindex(app):
-    current_search_client.indices.delete(index='test-*')
+    current_search_client.indices.delete(index='test-*', ignore=[404])
     with open("tests/mock_module/mapping/v6/authors/author-v1.0.0.json","r") as f:
         mapping = json.load(f)
     with app.test_request_context():

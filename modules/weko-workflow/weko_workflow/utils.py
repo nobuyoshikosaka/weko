@@ -1943,12 +1943,12 @@ def prepare_delete_workflow(post_activity, recid, deposit):
         if not '.' in recid.pid_value
         else "del_ver_{}".format(recid.pid_value)
     )
-
+    print("del_value:",del_value)
     draft_pid = PersistentIdentifier.query.filter_by(
         pid_type='recid',
         pid_value="{}.0".format(pid_value)
     ).one_or_none()
-
+    print("draft_pid:",draft_pid)
     if del_value.startswith("del_ver_"):
         item_id = recid.object_uuid
     elif not draft_pid:

@@ -103,4 +103,4 @@ WEKO_INDEX_TREE_PUBLIC_DEFAULT_TIMEZONE = 'Asia/Tokyo'
 """Default time zone for index publication date."""
 
 #インデックス公開ロック機能設定コンフィグ
-WEKO_INDEX_TREE_SHOW_MODAL = False
+WEKO_INDEX_TREE_SHOW_MODAL = True

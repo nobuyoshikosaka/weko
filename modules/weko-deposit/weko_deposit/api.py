@@ -1613,7 +1613,7 @@ class WekoDeposit(Deposit):
         self['_deposit']['owners'] = [int(dc['owner'])]
         self['_deposit']['weko_shared_ids'] = dc['weko_shared_ids']
         self['_deposit']['created_by'] = int(
-            self.data.get('created_by', 
+            self.data.get('created_by',
                           current_user.id if current_user and current_user.is_authenticated else system_admin.id))
 
         if data:
@@ -2052,7 +2052,6 @@ class WekoDeposit(Deposit):
 
         """
         draft_deposit = self.newversion(recid, is_draft=True)
-
         return draft_deposit
 
     def delete_content_files(self):

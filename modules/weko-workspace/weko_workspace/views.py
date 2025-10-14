@@ -127,7 +127,8 @@ def get_workspace_itemlist():
     workspaceItemList = []
     funderNameList = []
     awardTitleList = []
-    lang = session['language']
+    # lang = session['language']
+    lang = current_i18n.language
 
     # 1,デフォルト絞込み条件取得処理
     jsonCondition, isnotNone = (request.get_json() if request.method == "POST" else None), True
@@ -138,6 +139,8 @@ def get_workspace_itemlist():
 
     # 2,ESからアイテム一覧取得処理
     recordsData = get_es_itemlist()
+    # print(f"[workspace] get_es_itemlist: {recordsData}")
+
     # 7,ユーザー名と所属情報取得処理
     userNm = get_userNm_affiliation()
 
@@ -540,7 +543,8 @@ def save_filters():
     """
     data = request.get_json()
     user_id = current_user.id
-    lang = session['language']
+    # lang = session['language']
+    lang = current_i18n.language
 
     try:
         record = WorkspaceDefaultConditions.query.filter_by(user_id=user_id).first()
@@ -600,7 +604,8 @@ def reset_filters():
     """
 
     user_id = current_user.id
-    lang = session['language']
+    # lang = session['language']
+    lang = current_i18n.language
 
     try:
         record = WorkspaceDefaultConditions.query.filter_by(user_id=user_id).first()

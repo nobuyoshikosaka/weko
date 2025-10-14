@@ -1463,7 +1463,7 @@ def generate_events(
         ],
         double_click_window=0
     ).run()
-    current_search_client.indices.refresh(index='*')
+    current_search_client.indices.refresh(index='test-*')
 
 
 @pytest.yield_fixture()

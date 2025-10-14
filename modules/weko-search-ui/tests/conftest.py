@@ -1856,14 +1856,14 @@ def es(app):
     Don't create template so that the test or another fixture can modify the
     enabled events.
     """
-    current_search_client.indices.delete(index="*")
-    current_search_client.indices.delete_template("*")
+    current_search_client.indices.delete(index="test-*")
+    # current_search_client.indices.delete_template("*")
     list(current_search.create())
     try:
         yield current_search_client
     finally:
-        current_search_client.indices.delete(index="*")
-        current_search_client.indices.delete_template("*")
+        current_search_client.indices.delete(index="test-*")
+        # current_search_client.indices.delete_template("*")
 
 
 def generate_events(
@@ -1909,7 +1909,7 @@ def generate_events(
     EventsIndexer(
         mock_queue, preprocessors=[build_file_unique_id], double_click_window=0
     ).run()
-    current_search_client.indices.refresh(index="*")
+    current_search_client.indices.refresh(index="test-*")
 
 
 @pytest.yield_fixture()

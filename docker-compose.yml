@@ -418,7 +418,7 @@ services:
 
   mongo:
     restart: "always"
-    image: mongo:7.0.14
+    image: mongo:4.4
     environment:
       - MONGO_INITDB_ROOT_USERNAME=inbox
       - MONGO_INITDB_ROOT_PASSWORD=ibpass123

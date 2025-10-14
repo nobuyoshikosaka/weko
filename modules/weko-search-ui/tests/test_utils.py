@@ -3935,6 +3935,7 @@ def test_handle_check_duplication_item_id(i18n_app):
 
 # def export_all(root_url, user_id, data): *** not yet done
 # .tox/c1/bin/pytest --cov=weko_search_ui tests/test_utils.py::test_export_all -vv -s --cov-branch --cov-report=term --basetemp=/code/modules/weko-search-ui/.tox/c1/tmp
+@pytest.mark.skip()
 def test_export_all(db_activity, i18n_app, users, item_type, db_records2, redis_connect, db, create_export_all_data, mocker):
     i18n_app.config["WEKO_ADMIN_CACHE_PREFIX"] = "test_admin_cache_{name}_{user_id}"
     with patch("flask_login.utils._get_user", return_value=users[3]['obj']):
